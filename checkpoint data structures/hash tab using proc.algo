@@ -1,0 +1,31 @@
+FUNCTION sum_tab(tab : ARRAY_OF INTEGER) : INTEGER
+VAR
+    i, count, sum :INTEGER := 0;
+BEGIN
+    FOR i FROM 0 TO tab-1 STEP 1  DO
+        IF (hashtab.lookUp(tab[i]) = true) THEN
+            count := hashtab.get(tab[i]);
+            hashtab.insert(tab[i], count + 1);
+            ELSE 
+            hashtab.insert(tab[i], 1);
+        END_IF
+        IF (hashtab.get(tab[i] <> 1)) THEN
+            sum := sum + tab[i];
+        END_IF
+    END_FOR
+    RETURN sum ;
+END
+
+ALGORITHM hash_table_using_procedure
+VAR
+    set1, set2 : ARRAY_OF INTEGER[50];
+    hashtab : HASH_TABLE<INTEGER,INTEGER>;
+    sum1, sum2, result : INTEGER := 0;
+
+BEGIN
+
+    sum1 := sum_tab(set1 : ARRAY_OF INTEGER);
+    sum2 := sum_tab(set2 : ARRAY_OF INTEGER);
+    result := sum1 + sum2;
+    write (result);
+END

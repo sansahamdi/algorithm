@@ -1,0 +1,44 @@
+ALGORITHM playing_cards
+VAR
+    PROCEDURE insertion_sort(VAR arr : ARRAY_OF INTEGER)
+        VAR
+            i,j,current : INTEGER;
+        BEGIN
+            
+            FOR i FROM 1 TO arr.length-1 DO
+            current := arr [i];
+            j := i-1;
+            WHILE (j >= 0 AND arr[j] > current) DO
+                arr[j+1] := arr[j];
+                j := j-1;
+            END_WHILE
+            arr[j+1] = current;
+            END_FOR
+        END
+
+
+    FUNCTION read_size() : INTEGER
+    VAR
+        i : INTEGER;
+    BEGIN
+        REPEAT
+            read(i);
+        UNTIL (i <= 0 OR i > 15)
+    END
+
+    PROCEDURE read_arra(i : INTEGER, VAR t : ARRAY_OF INTEGER)
+    VAR
+        n : INTEGER;
+    BEGIN
+        FOR n FROM 0 TO i-1 STEP 1  DO
+            read(t[n]);
+        END_FOR
+    END
+
+BEGIN
+
+    i := read_size();
+    read_array(i, arr);
+    insertion_sort(arr);
+    
+END

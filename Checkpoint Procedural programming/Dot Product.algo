@@ -1,0 +1,77 @@
+ALGORITHM Dot_Product
+VAR
+    U, V : ARRAY_OF INTEGER[50];
+    n, i, j, ps : INTEGER;
+
+    //for reading the size of an array
+    FUNCTION read_size() : INTEGER
+    VAR
+        n : INTEGER;
+    BEGIN
+        REPEAT
+            read(n);
+        UNTIL (n <= 0 OR n > 50)
+    END
+
+    //for reading an array
+    PROCEDURE read_array(n : INTEGER, VAR t : ARRAY_OF INTEGER)
+    VAR
+        i : INTEGER;
+    BEGIN
+        FOR i FROM 0 TO n-1 STEP 1  DO
+            read(t[i]);
+        END_FOR
+    END
+
+    //Calculates the product point ps
+    FUNCTION product_point(tab1 : ARRAY_OF INTEGER, tab2 : ARRAY_OF INTEGER) : INTEGER
+    VAR
+        ps, i, j :INTEGER := 0;
+        n : INTEGER;
+        orthogonal : BOOLEAN := TRUE;
+    BEGIN
+        FOR i FROM 0 TO n-1 STEP 1  DO
+            FOR j FROM 0 TO n-1 STEP 1  DO
+                IF (!= orthogonal) THEN
+                    ps := ps + U[i]*V[j];
+                ELSE
+                    ps := 0;
+                END_IF
+            END_FOR
+        END_FOR
+        RETURN ps ;
+    END
+
+    //modification of the function in procedure
+    /*
+    PROCEDURE product_point(VAR tab1 : ARRAY_OF INTEGER, VAR tab2 : ARRAY_OF INTEGER)
+    VAR
+        ps, i, j : INTEGER := 0;
+        n : INTEGER;
+        orthogonal : BOOLEAN := TRUE;
+    BEGIN
+        FOR i FROM 0 TO n-1 STEP 1  DO
+            FOR j FROM 0 TO n-1 STEP 1  DO
+                IF (!= orthogonal) THEN
+                    ps := ps + U[i]*V[j];
+                ELSE
+                    ps := 0;
+                END_IF
+            END_FOR
+        END_FOR
+        write(ps);
+    END
+    */
+
+
+BEGIN
+
+
+    n := read_size();
+    read_array(n, U);
+    read_array(n, V);
+    ps := product_point(U, V);
+    // product_point(U, V);
+
+
+END
